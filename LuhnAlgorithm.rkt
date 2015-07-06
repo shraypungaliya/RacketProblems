@@ -8,11 +8,10 @@
       (cons (modulo number 10) (extract (floor (/ number 10))))))
 
 (define (double-alternate num-list count)
-  (if (null? num-list)
-      '()
-      (if (even? count)
-          (cons (* 2 (first num-list)) (double-alternate (rest num-list) (add1 count)))
-          (cons (first num-list)(double-alternate (rest num-list) (add1 count))))))
+  (cond
+    [(null? num-list) '()]
+    [(even? count)(cons (* 2 (first num-list)) (double-alternate (rest num-list) (add1 count)))]
+    [(cons (first num-list)(double-alternate (rest num-list) (add1 count)))]))
 
 (define (check-sum num-list sum)
   (if (null? num-list)
